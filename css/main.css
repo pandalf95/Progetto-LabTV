@@ -216,9 +216,9 @@ footer {
 
 .boxCliccato {
     width: 55%;
-    margin: 100px auto;
+    margin: 80px auto;
     height: auto;
-    background: #09061a ;
+    background: #160f3d ;
     border-radius: 10px;
     position: relative;
     border-radius: 10px;
@@ -226,24 +226,13 @@ footer {
 
 .boxCliccato h1 {
     text-align: center;
-    display: none;
 }
 
-.boxCliccato #chiudi, .boxCliccato #muted, .boxCliccato #play {
+.boxCliccato #chiudi, .boxCliccato #muted {
     position: absolute;
     cursor: pointer;
     border-style: none;
     z-index: 1000;
-}
-
-.boxCliccato #play {
-    bottom: 5vw;
-    left: 2vw;
-    background: url("../immagini/play-button.png") no-repeat center center;
-    background-size: cover;
-    width: 4.5vw;
-    height: 4.5vw;
-    filter: invert(100%);
 }
 
 .boxCliccato #chiudi{
@@ -265,15 +254,17 @@ footer {
     width: 50px;
     height: 50px;
     opacity: 0.3;
+    display: none;
 }
 
-.boxCliccato #muted:hover {
+.boxCliccato .muted:hover {
     opacity:1;
 }
 
 .boxCliccato .sinossi {
     margin: 1vw 2vw;
     font-size: 1vw;
+    padding: 20px;
 }
 
 .boxCliccato video {
@@ -282,14 +273,13 @@ footer {
     mask-image:-webkit-gradient(linear, left center, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    display: none;
 }
 
-.boxCliccato h3 {
-    position: absolute;
-    bottom: 5vw;
-    left: 8vw;
-    font-size: 1.5vw;
+.boxCliccato h2 {
+    font-size: 2vw;
     cursor: pointer;
+    margin: 1em;
 }
 
 .boxCliccato li{
@@ -307,6 +297,7 @@ footer {
     height: 10vw;
     border-radius: 10px;
     cursor: pointer;
+    margin-bottom: 1em;
 }
 
 .boxCliccato li:hover::after{
@@ -350,6 +341,26 @@ footer {
     top: 50%;
     transform: translateY(-50%);
     margin-left: 3vw;
+}
+
+.boxCliccato #playButton {
+    filter: invert(100%);
+    width: 7vw;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+    z-index: 1000;
+    display: none;
+}
+
+.boxCliccato #copertina {
+    width: 100%;
+    -webkit-mask-image:-webkit-gradient(linear, left center, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    mask-image:-webkit-gradient(linear, left center, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    border-radius: 10px;
+
 }
 
 @media screen and (max-width:1217px) {

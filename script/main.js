@@ -18,17 +18,46 @@ $(function() {
    });
 
    $(".box").click(function(){
-      video = document.querySelector("#copertinaCliccata video");
 
+      
       $("#copertinaCliccata").fadeIn();
-      video.volume = 0;
+      
 
       $("body").css("overflow-y", "hidden");
 
       $("#copertinaCliccata h1").html($(this).find(".titolo").html()); //Titolo
-      $("#copertinaCliccata .sinossi").html($(this).find(".sinossi").html()); //Sinossi
-      $("#copertinaCliccata video").attr("src", $(this).attr("data-src")); //Trailer
-      $("#copertinaCliccata ul").html($(this).find("ul").html()); //Episodi
+      $("#copertinaCliccata .sinossi").html($(this).find(".sinossi").html()); //Sinossi 
+      $("#copertinaCliccata #copertina").attr("src", $(this).find("img").attr("src")); //immagine
+
+     
+
+      if($(this).closest("section").is("#film")) {
+         $("#copertinaCliccata ul").css("display", "none");
+         $("#copertinaCliccata h2").css("display", "none");
+         $("#copertinaCliccata #playButton").css("display", "block");
+      }
+      else {
+         $("#copertinaCliccata ul").css("display", "block");
+         $("#copertinaCliccata #playButton").css("display", "none");
+         $("#copertinaCliccata h2").css("display", "block");
+      }
+
+      //CASO TRAILER 
+
+      video = document.querySelector("#copertinaCliccata video");
+      video.volume = 0;
+
+      if ($(this).is("[data-src]")) {
+         video.setAttribute("src", $(this).attr("data-src"));
+         $("#copertinaCliccata video").css("display", "block");
+         $("#copertinaCliccata #copertina").css("display", "none");
+         $("#copertinaCliccata #muted").css("display", "block");
+      }
+      else {
+         $("#copertinaCliccata video").css("display", "none");
+         $("#copertinaCliccata #copertina").css("display", "block");
+         $("#copertinaCliccata #muted").css("display", "none");
+      }
 
       $("#copertinaCliccata #chiudi").click(function(){
          $("#copertinaCliccata").fadeOut();
