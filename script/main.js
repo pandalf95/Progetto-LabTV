@@ -23,13 +23,17 @@ $(function() {
       $("#copertinaCliccata").fadeIn();
       video.volume = 0;
 
-      $("#copertinaCliccata h2").html($(this).find(".titolo").html()); //Titolo
+      $("body").css("overflow-y", "hidden");
+
+      $("#copertinaCliccata h1").html($(this).find(".titolo").html()); //Titolo
       $("#copertinaCliccata .sinossi").html($(this).find(".sinossi").html()); //Sinossi
       $("#copertinaCliccata video").attr("src", $(this).attr("data-src")); //Trailer
+      $("#copertinaCliccata ul").html($(this).find("ul").html()); //Episodi
 
       $("#copertinaCliccata #chiudi").click(function(){
          $("#copertinaCliccata").fadeOut();
          video.pause();
+         $("body").css("overflow-y", "auto");
       })
    });
 

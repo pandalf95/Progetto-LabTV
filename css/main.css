@@ -97,6 +97,10 @@ h2 {
     margin-bottom: 5vh;
 }
 
+.contenitore ul {
+    display: none;
+}
+
 .wrapper {
     position: relative;
     height: 11vw;
@@ -207,19 +211,20 @@ footer {
     background: rgba(0, 0, 0, 0.7);
     z-index: 1000;
     display: none;
+    overflow-y: auto;
 }
 
 .boxCliccato {
-    width: 40%;
+    width: 55%;
     margin: 100px auto;
-    height: 40vw;
+    height: auto;
     background: #09061a ;
     border-radius: 10px;
     position: relative;
     border-radius: 10px;
 }
 
-.boxCliccato h2 {
+.boxCliccato h1 {
     text-align: center;
     display: none;
 }
@@ -267,11 +272,8 @@ footer {
 }
 
 .boxCliccato .sinossi {
-    position: absolute;
-    left: 50%;
-    bottom: 20px;
-    padding: 20px;
-    font-size: 0.8vw;
+    margin: 1vw 2vw;
+    font-size: 1vw;
 }
 
 .boxCliccato video {
@@ -288,6 +290,66 @@ footer {
     left: 8vw;
     font-size: 1.5vw;
     cursor: pointer;
+}
+
+.boxCliccato li{
+    margin: 1em;
+    position: relative;
+    width: 65%;
+}
+
+.boxCliccato li::before{
+    content: "" ;
+    background: url("../immagini/episodio.png") no-repeat center center;
+    background-size: cover;
+    display: inline-block;
+    width: 16vw;
+    height: 10vw;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.boxCliccato li:hover::after{
+    content: "" ;
+    background: transparent url("../immagini/play-button.png") no-repeat center center;
+    background-size: cover;
+    display: inline-block;
+    width: 5vw;
+    height: 5vw;
+    cursor: pointer;
+    filter: invert(100%);
+    position: absolute;
+    left: 8vw;
+    top: 5vw;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+.boxCliccato li::after{
+    content: "" ;
+    background: transparent url("../immagini/play-button.png") no-repeat center center;
+    background-size: cover;
+    display: inline-block;
+    width: 5vw;
+    height: 5vw;
+    cursor: pointer;
+    filter: invert(100%);
+    position: absolute;
+    left: 8vw;
+    top: 5vw;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: .8s;
+}
+
+.boxCliccato li a{
+    text-decoration: none;
+    color: #ccc;
+    font-size: calc(0.5vw + 1em);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 3vw;
 }
 
 @media screen and (max-width:1217px) {
