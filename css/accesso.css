@@ -1,0 +1,82 @@
+li {
+    margin: 20px auto;
+}
+
+form {
+    max-width: 400px;
+    margin: 5% auto 0;
+    padding: 20px 50px;
+}
+
+img {
+    margin: 50px auto;
+    display: block;
+}
+
+form input, form button {
+    margin: 0 auto;
+    display: block;
+    font-size: 1.3em;
+    border-radius: 5px;
+    padding: 7px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    width: 100%;
+    border: 1px solid #000;
+}
+
+form #privacy {
+    margin: 0;
+}
+
+form button {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+form button:hover {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #fff;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    transition: .3s;
+    text-shadow: 2px 2px #000;
+}
+
+a:hover {
+    color: #7f77da;
+}
+
+form a {
+    font-size: .8em;
+}
+
+h4 {
+    color: #a9a9a9;
+    text-shadow: 2px 2px #000;
+    text-align: center;
+    font-weight: lighter;
+}
+
+form .errore {
+    border-color:#f00;
+}
+
+form span {
+    color: #f00;
+    display: none;
+}
+
+form .errore + span {
+    display: block;
+}
+
+#signup {
+    display: none;
+}
+
+
+

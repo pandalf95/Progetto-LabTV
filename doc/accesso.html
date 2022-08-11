@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Accedi | LabTv</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/accesso.css">
+
+    <script src="../script/jquery-3.6.0.min.js"></script>
+    <script src="../script/accesso.js"></script>
+    <script src="../script/functions.js"></script>
+</head>
+
+<body>
+
+    <img src="../immagini/logo-tipo.png" alt="Logo LABTv">
+
+    <div id="login">
+
+
+        <form action="login.jsp" method="post">
+
+            <ul>
+                <li>
+                    <input type="text" name="email" id="email" placeholder="Email">
+                    <span></span>
+                </li>
+                <li>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <span></span>
+                </li>
+                <li>
+                    <button>Accedi</button>
+                </li>
+            </ul>
+            <p><a href="#">Hai dimenticato la password?</a></p>
+        </form>
+
+        <h4>Nuovo su LABTv? <a href="#signup">Registrati ora</a></h4>
+
+    </div>
+
+
+    <div id="signup">
+
+        <form action="signup.jsp" method="post">
+
+            <ul>
+                <li>
+                    <input type="text" name="nome" id="nome" placeholder="Nome">
+                </li>
+                <li>
+                    <input type="text" name="cognome" id="cognome" placeholder="Cognome">
+                </li>
+                <li>
+                    <input type="text" name="email" id="email" placeholder="Email">
+                    <span></span>
+                </li>
+                <li>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <span></span>
+                </li>
+                <li>
+                    <input type="password" name="password2" id="password2" placeholder="Ripeti password">
+                    <span></span>
+                </li>
+                <li>
+                    <input type="checkbox" id="privacy">
+                    <span>Ho letto e accetto l'informativa sulla privacy</span>
+                </li>
+                <li>
+                    <button>Registrati</button>
+                </li>
+            </ul>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
