@@ -18,7 +18,6 @@
 
     <script src="../script/jquery-3.6.0.min.js"></script>
     <script src="../script/accesso.js"></script>
-    <script src="../script/functions.js"></script>
 </head>
 
 <body>
@@ -58,25 +57,28 @@
             <ul>
                 <li>
                     <input type="text" name="nome" id="nome" placeholder="Nome">
+                    <span></span>
                 </li>
                 <li>
                     <input type="text" name="cognome" id="cognome" placeholder="Cognome">
-                </li>
-                <li>
-                    <input type="text" name="email" id="email" placeholder="Email">
                     <span></span>
                 </li>
                 <li>
-                    <input type="password" name="password" id="password" placeholder="Password">
+                    <input type="text" name="email" id="emailReg" placeholder="Email">
                     <span></span>
                 </li>
                 <li>
-                    <input type="password" name="password2" id="password2" placeholder="Ripeti password">
+                    <input type="password" name="password" id="passwordReg" placeholder="Password">
+                    <span></span>
+                </li>
+                <li>
+                    <input type="password" name="password2" id="passwordReg2" placeholder="Ripeti password">
                     <span></span>
                 </li>
                 <li>
                     <input type="checkbox" id="privacy">
-                    <span>Ho letto e accetto l'informativa sulla privacy</span>
+                    <label for="privacy">Ho letto e accetto l'informativa sulla privacy</label>
+                    <span></span>
                 </li>
                 <li>
                     <button>Registrati</button>

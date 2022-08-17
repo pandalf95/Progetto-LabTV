@@ -26,7 +26,9 @@ form input, form button {
 }
 
 form #privacy {
-    margin: 0;
+    width: 25px;
+    display: inline;
+    cursor: pointer;
 }
 
 form button {
@@ -75,7 +77,11 @@ form .errore + span {
 }
 
 #signup {
-    display: none;
+    /*display: none;*/
+}
+
+label {
+    cursor: pointer;
 }
 
 
