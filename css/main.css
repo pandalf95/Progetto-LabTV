@@ -3,6 +3,12 @@
     font-family: 'Spinnaker', sans-serif;
 }
 
+p {
+    font-family: 'Sanchez', serif;
+    color: #ccc;
+    text-shadow: 2px 2px #000;
+}
+
 input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
@@ -23,7 +29,7 @@ body {
 }
 
 main {
-    margin-top: 120px;
+    margin-top: 200px;
 }
 
 /*BARRA MENU***************************************************************************************************************************/
@@ -35,18 +41,25 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 1000;
     transition: background .5s;
 }
 
 nav img {
    display: block;
    height: 80px;
-   margin: 10px 0 0 1em;
-   filter:  drop-shadow(1px 1px 0 #999)
-            drop-shadow(-1px 1px 0 #999)
-            drop-shadow(1px -1px 0 #999)
-            drop-shadow(-1px -1px 0 #999);
+   position: absolute;
+   top: 10px;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+#centrale {
+    position: relative;
+}
+
+#destro {
+    text-align: right;
 }
 
 ul {
@@ -56,11 +69,12 @@ ul {
 }
 
 nav ul li {
-    width: 50%;
+    width: 33.3%;
     float: left;
     line-height: 100px;
-    text-align: right;
-    padding-right: 2em;
+    padding: 0 1em 0 1em;
+    font-size: 1.3em;
+    height: 100px;
 }
 
 nav ul a {
@@ -68,13 +82,10 @@ nav ul a {
     color: #fff;
 }
 
-nav ul li li {
-    border: 1px solid #fff;
-    float: right;
-    width: 150px;
-    background: rgba(0, 0, 0, 0.3);
-    text-align: center;
-    display: none;
+a.esci {
+    font-size: .9em;
+    text-decoration: underline;
+    color: #999;
 }
 
 /*FINE BARRA MENU******************************************************************************************************************************/
@@ -165,7 +176,7 @@ h2 {
     height: auto;
     position:absolute;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 999;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -210,7 +221,7 @@ h2 {
 }
 
 .boxCliccato {
-    width: 55%;
+    width: 50%;
     margin: 80px auto;
     height: auto;
     background: #160f3d ;
@@ -231,8 +242,9 @@ h2 {
 }
 
 .boxCliccato #chiudi{
-    background: url("../immagini/cross.png") no-repeat center center;
+    background: url("../immagini/cross.png") no-repeat center center #ccc;
     background-size: cover;
+    border-radius: 50%;
     top: 10px;
     right: 10px;
     width: 50px;
@@ -361,6 +373,14 @@ h2 {
     mask-image:-webkit-gradient(linear, left center, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     border-radius: 10px;
 
+}
+
+footer {
+    background: #000;
+    background: -webkit-linear-gradient(to right, #212121, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #212121, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 300px;
+    margin-top: 15vh;
 }
 
 /*MEDIA QUERY****************************************************************************************************************/

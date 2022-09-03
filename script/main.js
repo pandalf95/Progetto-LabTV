@@ -3,11 +3,24 @@ let step;
 $(function() {
 
    let video;
-  
+   let utente = localStorage.getItem("nome");
+
+   if (utente != null) {
+      $("nav li span").html("Bevenuto/a " + utente);
+      $("nav li span").next().html("(Esci)").addClass("esci");
+   }
+
+   ($("nav li span").next()).click(function(e) {
+      e.preventDefault();
+      localStorage.clear();
+      $("nav li span").next().removeClass("esci");
+      open("doc/accesso.html", "_self");
+   });
+
 
    $(document).scroll(function() {
 
-      if ($(document).scrollTop() > 100) {
+      if ($(document).scrollTop() > 50) {
          $("nav").css("background", "#0f0c29");
          
       }

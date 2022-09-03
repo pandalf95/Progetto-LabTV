@@ -77,11 +77,16 @@ form .errore + span {
 }
 
 #signup {
-    /*display: none;*/
+    display: none;
 }
 
 label {
     cursor: pointer;
+}
+
+#login h2 {
+    text-align: center;
+    display: none;
 }
 
 

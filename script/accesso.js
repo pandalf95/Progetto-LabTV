@@ -2,8 +2,7 @@ $(function() {
 
     let accedi = $("#login form");
     let registrati = $("#signup form");
-    let nome, cognome,mail, password, password2;
-    let campiVuoti = false;
+    let nome, mail, password;
     
 
     accedi.submit( function (e) {
@@ -16,9 +15,8 @@ $(function() {
         if (!controllaLunghezza(mail)) {
             mail.addClass("errore");
             mail.next().html("La mail è obbligatoria");
-            campiVuoti = true;
         }
-        else if (!controllaCampo(mail)) {
+        else if (!controllaCampo(mail, 2)) {
             mail.addClass("errore");
             mail.next().html("La mail inserita non è valida");
         }
@@ -29,7 +27,6 @@ $(function() {
         if (!controllaLunghezza(password)) {
             password.addClass("errore");
             password.next().html("La password è obbligatoria");
-            campiVuoti = true;
         }
         else if (password.val().length < 6) {
             password.addClass("errore");
@@ -39,13 +36,13 @@ $(function() {
             password.removeClass("errore");
         }
 
-        if($(".errore").length == 0 && campiVuoti == false) {
+        if($(".errore").length == 0) {
             open("../index.html", "_self");
         }
 
     });
 
-    let registratiOra = $("h4 a");
+    let registratiOra = $("#login h4 a");
 
     registratiOra.click(function() {
 
@@ -60,48 +57,87 @@ $(function() {
 
         e.preventDefault();
 
-        nome = $("#signup #nome");
-        cognome = $("#signup #cognome");
-        mail = $("#signup #emailReg");
-        password = $("#signup #passwordReg");
-        password2 = $("signup #passwordReg2");
-
-
-        $("#signup input").each(function(i) {
+        $("#signup input[type =\"text\"").each(function(i) {
 
             if (!controllaLunghezza($(this))) {
                 $(this).addClass("errore");
                 $(this).next().html("Questo campo è obbligatorio");
             }
-            else if (!controllaCampo($(this)), i) {
+            else if (!controllaCampo($(this), i)) {
                 $(this).addClass("errore");
                 $(this).next().html("Il valore inserito non è valido");
             }
             else {
                 $(this).removeClass("errore");
             }
+        });
 
-        }) 
+        $("#signup input[type =\"password\"").each(function(i) {
 
+            if (!controllaLunghezza($(this))) {
+                $(this).addClass("errore");
+                $(this).next().html("Questo campo è obbligatorio");
+            }
+            else if ($(this).val().length < 6) {
+                $(this).addClass("errore");
+                $(this).next().html("Il valore inserito non è valido");
+            }
+            else {
+                $(this).removeClass("errore");
 
+                if (i == 0) {
+                    password = $("#signup #passwordReg").val();
+                }
+
+                if (i == 1) {
+                    if (!match(password, $(this).val())) {
+                        $(this).addClass("errore");
+                        $(this).next().html("Il valore inserito non corrisponde");
+                    }
+                    else {
+                        $(this).removeClass("errore");
+                    }
+                }
+            }
+
+        });
+
+        if (!$("#privacy").is(":checked")) {
+            $("#privacy").next().next().html("Devi accettare le condizioni").css("display", "block");
+        }
+        else {
+            $("#privacy").next().next().html("").css("display", "none");
+        }
+
+        if($(".errore").length == 0 && $("#privacy").is(":checked")) {
+            nome = $("#nome").val();
+            localStorage.setItem("nome", nome);
+            $("head title").html("Accedi | LabTv");
+            $("#login").fadeIn(0);
+            $("#signup").fadeOut(0);
+            $("#login h2").fadeIn(0);
+        }
 
     });
+
+    let accediReg = $("#signup h4 a");
+
+    accediReg.click(function() {
+        $("head title").html("Accedi | LabTv");
+        $("#login").fadeIn(0);
+        $("#signup").fadeOut(0);
+    })
 });
 
 function controllaCampo(x, y) { 
     if (y == 0 || y == 1) {
-        return /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(x.val());
-    }
-    else if (y == 2) {
-        return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(x.val());
+         return /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(x.val());
     }
     else {
-        return x == y;
+        return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(x.val());
     }
 
-    
-
-} //Controllo se la mail inserita abbia un formato valido e restituisco true o false
+} //Controllo se la mail e i nomi inseriti abbiano un formato valido e restituisco true o false
 
 function controllaLunghezza (x) {
     if (x.val().length == 0) {
@@ -109,5 +145,15 @@ function controllaLunghezza (x) {
     }
     else {
         return true;
+    }
+}
+
+function match(x, y) {
+
+    if (x == y) {
+        return true;
+    }
+    else {
+        return false;
     }
 }
