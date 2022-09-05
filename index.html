@@ -9,16 +9,19 @@
     <title>LabTV</title>
     <meta name="description" content="">
 
+    <link rel="icon" href="immagini/logo.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sanchez&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/main.css">
-    
+    <link rel="stylesheet" href="css/sovraimpressione.css">
 
     <script src="script/jquery-3.6.0.min.js"></script>
     <script src="script/main.js"></script>
+    <script src="script/functions.js"></script>
 
 </head>
 
@@ -27,7 +30,9 @@
     <nav>
             
         <ul>
-            <li><a href="#contatti">Contatti</a></li>
+            <li><input type="text" placeholder="Cerca...">
+                <img id="cerca" src="immagini/search.png" alt="Cerca">
+            </li>
             <li id="centrale">
                 <a href=""><img src="immagini/logo.png" alt="logo"></a>
             </li>
@@ -231,10 +236,67 @@
             </div>
         </div>
 
+        <div id="boxContattaci">
+
+            <h3>Grazie per averci contattato, risponderemo al più presto!</h3>
+
+            <form action="contact.jsp">
+
+                <h2>Contattaci</h2>
+
+                <div id="chiudiContatti"></div>
+
+                <ul>
+                    <li><input type="text" name="nome" placeholder="Nome">
+                    <span></span></li>
+                    <li><input type="text" name="cognome" placeholder="Cognome">
+                    <span></span></li>
+                    <li><input type="text" name="email" placeholder="Email">
+                    <span></span></li>
+                    <li><input type="text" name="number" placeholder="Numero">
+                    <span></span></li>
+                </ul>
+
+            <textarea name="messaggio" id="messaggio" cols="30" rows="10"></textarea>
+            <span></span>
+                   
+            <input type="checkbox" id="privacyContattaci">
+            <label for="privacyContattaci">Ho letto e accetto l'<a href="#">informativa sulla privacy</a></label>
+            <span></span>
+                
+            <button>INVIA</button>
+
+            </form>
+
+        </div>
+
 
     </main>
 
     <footer>
+
+        <ul id="social">
+            <li><img src="immagini/facebook.png" alt="facebook"></li>
+            <li><img src="immagini/instagram.png" alt="instagram"></li>
+            <li><img src="immagini/twitter.png" alt="twitter"></li>
+            <li><img src="immagini/youtube.png" alt="youtube"></li>
+        </ul>
+
+        <ul>
+            <li><a href="#">Centro Assistenza</a></li>
+            <li><a href="#">Note Legali</a></li>
+            <li><a href="#">Condizioni Di Utilizzo</a></li>
+        </ul>
+
+        <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Preferenze Per I Cookie</a></li>
+            <li><a href="#" id="contattaci">CONTATTACI</a></li>
+        </ul>
+
+       
+        <p><small>&copy; Copyright 2022, Fabrizio Conti</small></p>
+       
 
     </footer>
 

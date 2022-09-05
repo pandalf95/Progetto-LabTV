@@ -5,6 +5,21 @@ $(function() {
    let video;
    let utente = localStorage.getItem("nome");
 
+      /***********************************Comparsa barra di ricerca*********************************************** */
+
+
+   $("#cerca").click(function() {
+
+      if($(".comparsa").length == 0) {
+         $("nav input[type=\"text\"]").addClass("comparsa").animate({"width": "10vw"}, 250);
+      }
+      else {
+         $("nav input[type=\"text\"]").animate({"width": "0"}, 150).fadeOut(0).removeClass("comparsa");
+      }
+   });
+
+   /***********************************Prendo il nome dalla registrazione e lo uso per scrivere Bevenuto/a + nome al posto di accedi*********************************************** */
+
    if (utente != null) {
       $("nav li span").html("Bevenuto/a " + utente);
       $("nav li span").next().html("(Esci)").addClass("esci");
@@ -17,18 +32,24 @@ $(function() {
       open("doc/accesso.html", "_self");
    });
 
+   /***********************************Allo scorrere della pagina rendo la nav più scura e visibile*********************************************** */
+
 
    $(document).scroll(function() {
 
       if ($(document).scrollTop() > 50) {
          $("nav").css("background", "#0f0c29");
-         
+         $("nav input[type=\"text\"]").css("background-color", "#24243e");
       }
       else {
          $("nav").css("background", "linear-gradient(to right, #24243e, #302b63, #0f0c29)");
+         $("nav input[type=\"text\"]").css("background-color", "#0f0c29");
       }
 
-   }); // Il menu cambia colore di sfondo allo scroll verso il basso
+   });
+
+   /***********************************Faccio click su una copertina*********************************************** */
+
 
    $(".box").click(function(){
 
@@ -102,7 +123,7 @@ $(function() {
       }
    });  //Gestisco il pulsante del volume nel caso trailer
 
-   //FINE CASO TRAILER****************************************************************************************************************************************
+   /*********************************Posiziono i box al caricamento della pagina e ogni volta che modifico la width della finestra******************************************** */
 
 
    posizionaBox($("#serie .box"));
@@ -116,6 +137,9 @@ $(function() {
       posizionaBox($("#anime .box"));
       $(".swipeLeft").fadeOut();
    });
+
+   /***********************************Richiamo la funzione slider per ogni categoria di copertine*********************************************** */
+
 
    slider($("#serie .swipeRight"),
          $("#serie .swipeLeft"),
@@ -138,102 +162,53 @@ $(function() {
          $("#anime .ultimo"),
          );
 
+   /*********************************FORM CONTATTACI*************************************/
+
+   let messaggio;
+
+   $("footer a").click(function(e) {
+
+      e.preventDefault();
+
+   })
+   
+   $("#contattaci").click(function() {
+      clearInterval(messaggio);
+      
+      $("#boxContattaci").fadeIn();
+      $("#boxContattaci form").css("display", "block");
+      
+      $("#chiudiContatti").click(function() {
+         $("#boxContattaci").fadeOut(0);
+         $("#boxContattaci form input").removeClass("errore");
+         $("#privacyContattaci").next().next().html("").css("display", "none");
+         $("#boxContattaci form").trigger("reset");
+      });
+   });
+
+   $("#boxContattaci form").submit(function(e) {
+
+      e.preventDefault();
+
+      controllaInputText($("#boxContattaci form li input[type=\"text\"]"));
+
+      if (!$("#privacyContattaci").is(":checked")) {
+         $("#privacyContattaci").next().next().html("Devi accettare le condizioni").css("display", "block");
+      }
+
+      else {
+         $("#privacyContattaci").next().next().html("").css("display", "none");
+      }
+       
+
+      if($(".errore").length == 0 && $("#privacyContattaci").is(":checked")) {
+         $("#boxContattaci form").css("display", "none");
+         $("#boxContattaci h3").fadeIn();
+         messaggio = setInterval(function(){$("#boxContattaci").fadeOut();}, 2000);
+         $("#boxContattaci form").trigger("reset");
+      }
+
+   });
+
 }); //.ready
 
-function posizionaBox (box) {
-
-   if($(window).width() > 1200) {
-      box.each(function(i) {
-         step = 20;
-         $(this).attr("data-left", step*i);
-         $(this).css("left", $(this).attr("data-left") + "%" );
-      });
-   }
-   else if($(window).width() <= 1200 && $(window).width() > 800) {
-      box.each(function(i) {
-         step = 25;
-         $(this).attr("data-left", step*i);
-         $(this).css("left", $(this).attr("data-left") + "%" );
-      });
-   }
-
-   else if ($(window).width() <= 800 && $(window).width() > 600) {
-      box.each(function(i) {
-         step = 33;
-         $(this).attr("data-left", step*i);
-         $(this).css("left", $(this).attr("data-left") + "%" );
-      });
-   }
-   else {
-      box.each(function(i) {
-         step = 50;
-         $(this).attr("data-left", step*i);
-         $(this).css("left", $(this).attr("data-left") + "%" );
-      });
-   }
-
-}
-
-function slider (destra, sinistra, box, primo, ultimo) {
-
-   let left;
-
-   destra.click(function() {
-
-      ultimoData = parseInt(ultimo.attr("data-left")) + step;
-
-      if (ultimoData == 100 || ultimoData == 99) {
-
-         box.each(function(i) {
-            left = parseInt($(this).attr("data-left"));
-
-            $(this).attr("data-left", step*i);
-            $(this).stop().animate({"left": $(this).attr("data-left") + "%"}, 800 );
-         });
-         
-      }
-      else {
-
-         box.each(function(i) {
-
-               left = parseInt($(this).attr("data-left"));
-
-               $(this).attr("data-left", left - step );
-
-               $(this).stop().animate({"left": $(this).attr("data-left") + "%"}, 800 );
-               
-            });
-         } //each
-
-      if (primo.attr("data-left") != "0") {
-         sinistra.fadeIn();
-      }
-      else {
-         sinistra.fadeOut();
-      }
-
-   }); // right.click
-
-   sinistra.click(function() {
-
-      box.each(function() {
-
-         left = parseInt($(this).attr("data-left"));
-
-         $(this).attr("data-left", (left + step));
-
-         $(this).stop().animate({"left": $(this).attr("data-left") + "%"}, 800 );
-
-
-      }); //each
-
-      if (primo.attr("data-left") != "0") {
-         sinistra.fadeIn();
-      }
-      else {
-         sinistra.fadeOut();
-      }
-
-   }); // left.click
-
-}

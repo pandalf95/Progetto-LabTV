@@ -57,20 +57,7 @@ $(function() {
 
         e.preventDefault();
 
-        $("#signup input[type =\"text\"").each(function(i) {
-
-            if (!controllaLunghezza($(this))) {
-                $(this).addClass("errore");
-                $(this).next().html("Questo campo è obbligatorio");
-            }
-            else if (!controllaCampo($(this), i)) {
-                $(this).addClass("errore");
-                $(this).next().html("Il valore inserito non è valido");
-            }
-            else {
-                $(this).removeClass("errore");
-            }
-        });
+        controllaInputText($("#signup input[type =\"text\""));
 
         $("#signup input[type =\"password\"").each(function(i) {
 
@@ -128,32 +115,3 @@ $(function() {
         $("#signup").fadeOut(0);
     })
 });
-
-function controllaCampo(x, y) { 
-    if (y == 0 || y == 1) {
-         return /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(x.val());
-    }
-    else {
-        return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(x.val());
-    }
-
-} //Controllo se la mail e i nomi inseriti abbiano un formato valido e restituisco true o false
-
-function controllaLunghezza (x) {
-    if (x.val().length == 0) {
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-
-function match(x, y) {
-
-    if (x == y) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}

@@ -6,7 +6,25 @@
 p {
     font-family: 'Sanchez', serif;
     color: #ccc;
-    text-shadow: 2px 2px #000;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+form .errore {
+    border-color:#f00;
+}
+
+form span {
+    color: #f00;
+    display: none;
+}
+
+form .errore + span {
+    display: block;
 }
 
 input:-webkit-autofill,
@@ -45,7 +63,28 @@ nav {
     transition: background .5s;
 }
 
-nav img {
+nav input[type=text] {
+    padding: 1em;
+    background-color: #0f0c29;
+    border: none;
+    color: white;
+    width: 10vw;
+    width: 0;
+    display: none;
+}
+
+input.comparsa {
+    display: block;
+}
+
+nav #cerca {
+    height: 24px;
+    filter: invert();
+    cursor: pointer;
+    transform: translateY(20%);
+}
+
+nav #centrale img {
    display: block;
    height: 80px;
    position: absolute;
@@ -60,12 +99,6 @@ nav img {
 
 #destro {
     text-align: right;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 nav ul li {
@@ -98,6 +131,18 @@ h1 {
 h2 {
     margin-left: 10px;
     font-size: 1.5vw;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    transition: .3s;
+    text-shadow: 2px 2px #000;
+    font-size: .8em;
+}
+
+a:hover {
+    color: #7f77da;
 }
 
 /*CATEGORIE************************************************************************************************************************************/
@@ -206,181 +251,59 @@ h2 {
     opacity: 1;
 }
 
-/*BOX IN SOVRAIMPRESSIONE*****************************************************************************************************/
-
-#copertinaCliccata {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    display: none;
-    overflow-y: auto;
-}
-
-.boxCliccato {
-    width: 50%;
-    margin: 80px auto;
-    height: auto;
-    background: #160f3d ;
-    border-radius: 10px;
-    position: relative;
-    border-radius: 10px;
-}
-
-.boxCliccato h1 {
-    text-align: center;
-}
-
-.boxCliccato #chiudi, .boxCliccato #muted {
-    position: absolute;
-    cursor: pointer;
-    border-style: none;
-    z-index: 1000;
-}
-
-.boxCliccato #chiudi{
-    background: url("../immagini/cross.png") no-repeat center center #ccc;
-    background-size: cover;
-    border-radius: 50%;
-    top: 10px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    filter: invert(100%);
-    
-}
-
-.boxCliccato #muted {
-    background: url("../immagini/mute.png") no-repeat center center;
-    background-size: cover;
-    top: 10px;
-    left: 10px;
-    width: 50px;
-    height: 50px;
-    opacity: 0.3;
-    display: none;
-}
-
-.boxCliccato .muted:hover {
-    opacity:1;
-}
-
-.boxCliccato .sinossi {
-    margin: 1vw 2vw;
-    font-size: 1vw;
-    padding: 20px;
-}
-
-.boxCliccato video {
-    width: 100%;
-    -webkit-mask-image:-webkit-gradient(linear, left center, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
-    mask-image:-webkit-gradient(linear, left center, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    display: none;
-}
-
-.boxCliccato h2 {
-    font-size: 2vw;
-    cursor: pointer;
-    margin: 1em;
-}
-
-.boxCliccato li{
-    margin: 1em;
-    position: relative;
-    width: 65%;
-}
-
-.boxCliccato li::before{
-    content: "" ;
-    background: url("../immagini/episodio.png") no-repeat center center;
-    background-size: cover;
-    display: inline-block;
-    width: 16vw;
-    height: 10vw;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-bottom: 1em;
-}
-
-.boxCliccato li:hover::after{
-    content: "" ;
-    background: transparent url("../immagini/play-button.png") no-repeat center center;
-    background-size: cover;
-    display: inline-block;
-    width: 5vw;
-    height: 5vw;
-    cursor: pointer;
-    filter: invert(100%);
-    position: absolute;
-    left: 8vw;
-    top: 5vw;
-    transform: translate(-50%, -50%);
-    opacity: 1;
-}
-
-.boxCliccato li::after{
-    content: "" ;
-    background: transparent url("../immagini/play-button.png") no-repeat center center;
-    background-size: cover;
-    display: inline-block;
-    width: 5vw;
-    height: 5vw;
-    cursor: pointer;
-    filter: invert(100%);
-    position: absolute;
-    left: 8vw;
-    top: 5vw;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: .8s;
-}
-
-.boxCliccato li a{
-    text-decoration: none;
-    color: #ccc;
-    font-size: calc(0.5vw + 1em);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: 3vw;
-}
-
-.boxCliccato #playButton {
-    filter: invert(100%);
-    width: 7vw;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    cursor: pointer;
-    z-index: 1000;
-    display: none;
-    transition: width 0.5s;
-}
-
-.boxCliccato #playButton:hover {
-    width: 8vw;
-}
-
-.boxCliccato #copertina {
-    width: 100%;
-    -webkit-mask-image:-webkit-gradient(linear, left center, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
-    mask-image:-webkit-gradient(linear, left center, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
-    border-radius: 10px;
-
-}
+/************************FOOTER****************************/
 
 footer {
-    background: #000;
-    background: -webkit-linear-gradient(to right, #212121, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #212121, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: rgba(0, 0, 0, 0.5);
     height: 300px;
     margin-top: 15vh;
+    position: relative;
+}
+
+footer #social {
+    width: 100%;
+}
+
+footer #social li {
+    float: left;
+    width: 25%;
+}
+
+footer #social img {
+    width: 36px;
+    filter: invert();
+    display: block;
+    margin: 50px auto;
+    cursor: pointer;
+}
+
+footer  ul {
+    width: 50%;
+    float: left;
+}
+
+footer li {
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+}
+
+footer a {
+    text-decoration: none;
+    color: #fff;
+    font-size: smaller;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+    transform: translateX(50%);
+
 }
 
 /*MEDIA QUERY****************************************************************************************************************/

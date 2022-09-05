@@ -20,7 +20,7 @@ form input, form button {
     border-radius: 5px;
     padding: 7px;
     background: rgba(0, 0, 0, 0.4);
-    color: #fff;
+    color: #ccc;
     width: 100%;
     border: 1px solid #000;
 }
@@ -39,21 +39,7 @@ form button {
 form button:hover {
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid #fff;
-}
-
-a {
     color: #fff;
-    text-decoration: none;
-    transition: .3s;
-    text-shadow: 2px 2px #000;
-}
-
-a:hover {
-    color: #7f77da;
-}
-
-form a {
-    font-size: .8em;
 }
 
 h4 {
@@ -61,19 +47,6 @@ h4 {
     text-shadow: 2px 2px #000;
     text-align: center;
     font-weight: lighter;
-}
-
-form .errore {
-    border-color:#f00;
-}
-
-form span {
-    color: #f00;
-    display: none;
-}
-
-form .errore + span {
-    display: block;
 }
 
 #signup {
