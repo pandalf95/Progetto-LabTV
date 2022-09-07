@@ -107,7 +107,7 @@ function slider (destra, sinistra, box, primo, ultimo) {
           left = parseInt($(this).attr("data-left"));
 
           $(this).attr("data-left", step*i);
-          $(this).stop().animate({"left": $(this).attr("data-left") + "%"}, 800 );
+          $(this).stop().animate({"left": $(this).attr("data-left") + "%"}, 600 );
        });
        
     }
@@ -120,7 +120,7 @@ function slider (destra, sinistra, box, primo, ultimo) {
 
              $(this).attr("data-left", left - step );
 
-             $(this).stop().animate({"left": $(this).attr("data-left") + "%"}, 800 );
+             $(this).stop().animate({"left": $(this).attr("data-left") + "%"}, 450 );
              
           });
        } //each
@@ -142,7 +142,7 @@ function slider (destra, sinistra, box, primo, ultimo) {
 
        $(this).attr("data-left", (left + step));
 
-       $(this).stop().animate({"left": $(this).attr("data-left") + "%"}, 800 );
+       $(this).stop().animate({"left": $(this).attr("data-left") + "%"}, 450 );
 
 
     }); //each

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/sovraimpressione.css">
 
     <script src="script/jquery-3.6.0.min.js"></script>
+    <script src="script/responsiveslides.min.js"></script>
     <script src="script/main.js"></script>
     <script src="script/functions.js"></script>
 
@@ -46,7 +47,21 @@
 
     <main>
 
-        <h1>HOME</h1>
+        <div id="slider">
+            <ul class="rslides">
+                <li>
+                    <img src="immagini/slider-shameless.webp" alt="">
+                </li>
+                <li>
+                    <img src="immagini/slider-originals.webp" alt="">
+                </li>
+                <li>
+                    <img src="immagini/slider-maverick.webp" alt="">
+                </li>
+            </ul>
+         </div>
+
+        <h1></h1>
 
         <section id="serie" class="contenitore">
 
@@ -214,7 +229,7 @@
             <div class="boxCliccato">
                 <button id="chiudi"></button>
                 <img src="" alt="" id="copertina">
-                <video src="" autoplay></video>
+                <video src="" autoplay poster=""></video>
                 <img src="immagini/play-button.png" alt="" id="playButton">
                 <h1>TITOLO DELL'ELEMENTO CLICCATO</h1>
                 <p class="sinossi"></p>

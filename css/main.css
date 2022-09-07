@@ -84,7 +84,7 @@ nav #cerca {
     transform: translateY(20%);
 }
 
-nav #centrale img {
+nav #centrale img{
    display: block;
    height: 80px;
    position: absolute;
@@ -145,6 +145,79 @@ a:hover {
     color: #7f77da;
 }
 
+/*********************************SLIDER**************************************************/
+
+#slider {
+    position: relative;
+    margin-bottom: 2em;
+    cursor: pointer;
+}
+
+.rslides {
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    }
+  
+.rslides li {
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+    }
+  
+.rslides li:first-child {
+    position: relative;
+    display: block;
+    float: left;
+    }
+  
+.rslides img {
+    display: block;
+    height: auto;
+    float: left;
+    width: 100%;
+    border: 0;
+    -webkit-mask-image:-webkit-linear-gradient(top,rgba(0,0,0,0), rgba(0,0,0,1),rgba(0,0,0,0));
+    mask-image:-webkit-linear-gradient(top,rgba(0,0,0,0), rgba(0,0,0,1),rgba(0,0,0,0));
+    
+    }
+
+.rslides_tabs{   
+        position: absolute;
+        z-index: 10;
+        left:50%;
+        bottom: 10px;
+        /*background: rgb(192, 30, 210);*/
+        /*transition: 2s;*/
+        transform: translateX(-50%);
+    }
+
+.rslides_tabs li{
+    display: inline-block;
+    margin: 5px;
+}
+
+.rslides_tabs li a{
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    border:solid 2px #aaa;
+    display: block;
+    background: #1b1b3b;
+    border-radius:50%;
+}
+
+.rslides_tabs .rslides_here a{
+    transform: scale(1.3);
+    background: #302b63;
+    border:solid 2px #fff;
+}
+
 /*CATEGORIE************************************************************************************************************************************/
 
 .contenitore {
@@ -170,7 +243,7 @@ a:hover {
     transition: transform 1s;
     text-align: center;
     position: absolute;
-    transition: transform 1s/*, left 1s*/;
+    transition: transform .8s/*, left 1s*/;
     top: 0;
 }
 
@@ -193,7 +266,7 @@ a:hover {
 }
 
 .box:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
     height: auto;
     background: #0f0c29;
     border-radius: 10px;
@@ -292,10 +365,6 @@ footer a {
     text-decoration: none;
     color: #fff;
     font-size: smaller;
-}
-
-footer a:hover {
-    text-decoration: underline;
 }
 
 footer p {

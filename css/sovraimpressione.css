@@ -221,7 +221,7 @@
 #boxContattaci form textarea {
     width: 85%;
     display: block;
-    margin: 50px auto;
+    margin: 0 auto;
     border-radius: 20px;
     padding: .5em;
     background-color: #ccc;
@@ -230,6 +230,7 @@
 
 #boxContattaci #privacyContattaci {
     margin-left: 10%;
+    margin-top: 50px;
     cursor: pointer;
 }
 

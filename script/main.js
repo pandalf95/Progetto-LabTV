@@ -19,18 +19,21 @@ $(function() {
    });
 
    /***********************************Prendo il nome dalla registrazione e lo uso per scrivere Bevenuto/a + nome al posto di accedi*********************************************** */
-
+   
    if (utente != null) {
       $("nav li span").html("Bevenuto/a " + utente);
       $("nav li span").next().html("(Esci)").addClass("esci");
    }
-
-   ($("nav li span").next()).click(function(e) {
-      e.preventDefault();
-      localStorage.clear();
-      $("nav li span").next().removeClass("esci");
-      open("doc/accesso.html", "_self");
+   
+   $("nav li span").next().click(function(e) {
+         
+         localStorage.removeItem("nome");
+         $("nav li span").next().removeClass("esci");
+         open("index.html", "_self");
    });
+  
+
+  
 
    /***********************************Allo scorrere della pagina rendo la nav più scura e visibile*********************************************** */
 
@@ -47,6 +50,31 @@ $(function() {
       }
 
    });
+
+   /*************************************SLIDER***********************************************************/
+
+   $(".rslides").responsiveSlides({
+      auto: true,             // Boolean: Animate automatically, true or false
+      speed: 800,            // Integer: Speed of the transition, in milliseconds
+      timeout: 5000,          // Integer: Time between slide transitions, in milliseconds
+      pager: true,           // Boolean: Show pager, true or false
+      nav: false,             // Boolean: Show navigation, true or false
+      random: false,          // Boolean: Randomize the order of the slides, true or false
+      pause: true,           // Boolean: Pause on hover, true or false
+      pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+      prevText: "Previous",   // String: Text for the "previous" button
+      nextText: "Next",       // String: Text for the "next" button
+      maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+      navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+      manualControls: "",     // Selector: Declare custom pager navigation
+      namespace: "rslides",   // String: Change the default namespace used
+      before: function(){},   // Function: Before callback
+      after: function(){}     // Function: After callback
+    });
+
+    if($(".rslides_tabs").length>0){
+      $(".rslides_tabs a").text("");
+  }
 
    /***********************************Faccio click su una copertina*********************************************** */
 
@@ -83,6 +111,7 @@ $(function() {
       if ($(this).is("[data-src]")) {  //Nel caso clicco il box che contiene un data-src con valore il percorso di un video
 
          video.setAttribute("src", $(this).attr("data-src")); //Inietto il video nel box in sovraimpressione
+         video.setAttribute("poster", $(this).find("img").attr("src")); //Inietto il poster del video dalla copertina
 
          $("#copertinaCliccata video").css("display", "block");
          $("#copertinaCliccata #copertina").css("display", "none");
@@ -95,13 +124,20 @@ $(function() {
          $("#copertinaCliccata #muted").css("display", "none");
       } //Altrimenti nascondo il box video e il pulsante del volume e mostro solamente l'immagine di copertina cliccata
 
+      video.addEventListener("ended", function() {
+         let v = video.currentSrc;
+         video.src="";
+         video.src = v; 
+         video.pause(); 
+      })
+   
+
       $("#copertinaCliccata #chiudi").click(function(){
          $("#copertinaCliccata").fadeOut();
          video.pause();
          $("body").css("overflow-y", "auto");
       }) //Cliccando sul pulsante chiudi il video va in pausa, il box in sovraimpressione scompare e posso di nuovo scrollare il body
    });
-
 
    $(".boxCliccato #muted").click(function() {
 
@@ -183,6 +219,7 @@ $(function() {
          $("#boxContattaci form input").removeClass("errore");
          $("#privacyContattaci").next().next().html("").css("display", "none");
          $("#boxContattaci form").trigger("reset");
+         $("#messaggio").removeClass("errore");
       });
    });
 
@@ -198,6 +235,14 @@ $(function() {
 
       else {
          $("#privacyContattaci").next().next().html("").css("display", "none");
+      }
+
+      if ($("#messaggio").val().trim().length < 10) {
+         $("#messaggio").addClass("errore");
+         $("#messaggio").next().html("Inserisci un messaggio di almeno 10 caratteri")
+      }
+      else {
+         $("#messaggio").removeClass("errore");
       }
        
 

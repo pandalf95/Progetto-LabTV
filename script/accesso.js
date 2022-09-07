@@ -48,6 +48,7 @@ $(function() {
 
         $("head title").html("Registrati | LabTv");
         $("#login").fadeOut(0);
+        $("#login input").removeClass("errore").val("");
         $("#signup").fadeIn(0);
 
     });
@@ -113,5 +114,7 @@ $(function() {
         $("head title").html("Accedi | LabTv");
         $("#login").fadeIn(0);
         $("#signup").fadeOut(0);
+        $("#signup input").removeClass("errore").val("");
+        $("#privacy").next().next().html("").css("display", "none");
     })
 });
